@@ -584,6 +584,41 @@ function getMarkerDetails(
       }
       case 'tracing': {
         switch (data.category) {
+          case 'Paint': {
+            tooltipDetails = (
+              <TooltipDetails>
+                <TooltipDetail label="Node Count">
+                  {data.nodeCount}
+                </TooltipDetail>
+                <TooltipDetail label="Node Count Delta">
+                  {data.nodeCountDelta}
+                </TooltipDetail>
+                <TooltipDetail label="Invalidated Pixel">
+                  {data.invalidRegion}
+                </TooltipDetail>
+                <TooltipDetail label="Document URI">
+                  {data.documentUri}
+                </TooltipDetail>
+                <TooltipDetail label="Transaction Id">
+                  {data.transactionId}
+                </TooltipDetail>
+              </TooltipDetails>
+            );
+            break;
+          }
+          case 'DOM': {
+            tooltipDetails = (
+              <TooltipDetails>
+                <TooltipDetail label="Docshell History ID">
+                  {data.docshellHistoryId}
+                </TooltipDetail>
+                <TooltipDetail label="Node Count">
+                  {data.node_count}
+                </TooltipDetail>
+              </TooltipDetails>
+            );
+            break;
+          }
           case 'DOMEvent': {
             const latency =
               data.timeStamp === undefined
